@@ -1,0 +1,39 @@
+
+
+.flex-container {
+    display: flex; 
+    max-width: 800px; 
+    width: 100%;
+    margin: 0 auto; 
+}
+
+.container-left,
+.container-right {
+    flex: 1; 
+    padding: 10px; 
+    box-sizing: border-box; 
+    
+   
+    
+}
+
+
+.container-left {
+    background-color: #b4b3b1; 
+    color:black;
+    margin-right: 1px;
+    align-items: center;
+    font-family: cursive;
+    font-size: medium;
+
+    
+    
+}
+
+.container-right {
+    background-color: #b4b3b1; 
+}
+.image1
+{
+    width: 100%;
+}
