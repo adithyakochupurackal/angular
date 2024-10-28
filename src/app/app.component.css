@@ -1,0 +1,9 @@
+.navbar-nav .nav-link {
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light white background on hover */
+    color: #ffffff; /* Ensuring text remains white */
+    border-radius: 5px; /* Slightly round corners */
+}

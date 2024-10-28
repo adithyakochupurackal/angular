@@ -1,32 +1,66 @@
-<div class="flex-container">
-    <div class="container-left">
-        <table>
-            <thead>
-                <tr>
-                    <th>Product ID</th>
-                    <th>Description</th>
-                    <th>Brand</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <!-- Uncomment if needed
-                    <th>Availability</th>
-                    <th>Free Shipping</th>
-                    -->
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let product of products; index as i">
-                    <td>{{ product.productId }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.brand }}</td>
-                    <td>{{ product.qty }}</td>
-                    <td>{{ product.price }}</td>
-                    <!-- Uncomment if needed
-                    <td>{{ product.isAvailable }}</td>
-                    <td>{{ product.freeshipping }}</td>
-                    -->
-                </tr>
-            </tbody>
-        </table>
-        
-    </div> 
+<div class="container mt-5">
+  <h2 class="text-center">Product Management</h2>
+
+  <!-- Form for Adding/Editing Products -->
+  <form (ngSubmit)="editingProduct ? updateProduct() : addProduct()" class="mt-4">
+    <div class="mb-3">
+      <label for="productId" class="form-label">Product ID:</label>
+      <input id="productId" [(ngModel)]="newProduct.productId" name="productId" type="number" class="form-control" [disabled]="editingProduct !== null" required />
+    </div>
+    
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <input id="description" [(ngModel)]="newProduct.description" name="description" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+      <label for="brand" class="form-label">Brand:</label>
+      <input id="brand" [(ngModel)]="newProduct.brand" name="brand" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+      <label for="qty" class="form-label">Quantity:</label>
+      <input id="qty" [(ngModel)]="newProduct.qty" name="qty" type="number" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+      <label for="price" class="form-label">Price:</label>
+      <input id="price" [(ngModel)]="newProduct.price" name="price" type="number" class="form-control" required />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">
+      {{ editingProduct ? 'Update Product' : 'Add Product' }}
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="cancelEditing()" *ngIf="editingProduct">Cancel</button>
+  </form>
+
+  <hr>
+
+  <!-- Product List -->
+  <h3 class="mt-5">Product List</h3>
+  <table class="table table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>Product ID</th>
+        <th>Description</th>
+        <th>Brand</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.productId }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.qty }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="editProduct(product)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.productId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

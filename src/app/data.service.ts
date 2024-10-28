@@ -27,7 +27,28 @@ export class DataService {
 
    }
    fetchAllProducts():Observable<any>{
-      const url:string="http://localhost:8090/product/api/productsinfo"
+      const url:string="http://localhost:8090/product/api.1.0/getAllProducts"
        return this.http.get(url);
    }
+
+     // Add a new product
+  addProduct(newProduct: Product): Observable<Product> {
+    return this.http.post<Product>("http://localhost:8090/product/api.1.0/addProduct", newProduct);
+  }
+
+  // Get a product by ID
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(" http://localhost:8090/product/api.1.0/product/${id}");
+  }
+
+  // Update a product
+  updateProduct(id: number, updatedProduct: Product): Observable<Product> {
+    return this.http.put<Product>("http://localhost:8090/product/api.1.0/product/update/${id}", updatedProduct);
+  }
+
+  // Delete a product
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>("http://localhost:8090/product/api.1.0/product/delete/${id}");
+  }
 }
+

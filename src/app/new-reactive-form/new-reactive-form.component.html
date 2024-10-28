@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <h2 class="text-center">Product Management</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+      <div class="mb-3">
+          <label for="productId" class="form-label">Product ID:</label>
+          <input id="productId" formControlName="productId" type="number" class="form-control" required />
+          <div *ngIf="productForm.get('productId')?.invalid && productForm.get('productId')?.touched" aria-live="polite">
+              <small *ngIf="productForm.get('productId')?.errors?.['required']" class="text-danger">Product ID is required.</small>
+              <small *ngIf="productForm.get('productId')?.errors?.['pattern']" class="text-danger">Product ID must be a valid number.</small>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="description" class="form-label">Description:</label>
+          <input id="description" formControlName="description" class="form-control" required />
+          <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" aria-live="polite">
+              <small *ngIf="productForm.get('description')?.errors?.['required']" class="text-danger">Description is required.</small>
+              <small *ngIf="productForm.get('description')?.errors?.['minlength']" class="text-danger">Description must be at least 6 characters.</small>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="brand" class="form-label">Brand:</label>
+          <input id="brand" formControlName="brand" class="form-control" required />
+          <div *ngIf="productForm.get('brand')?.invalid && productForm.get('brand')?.touched" aria-live="polite">
+              <small *ngIf="productForm.get('brand')?.errors?.['required']" class="text-danger">Brand is required.</small>
+              <small *ngIf="productForm.get('brand')?.errors?.['minlength']" class="text-danger">Brand must be at least 10 characters.</small>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="qty" class="form-label">Quantity:</label>
+          <input id="qty" formControlName="qty" type="number" class="form-control" required />
+          <div *ngIf="productForm.get('qty')?.invalid && productForm.get('qty')?.touched" aria-live="polite">
+              <small *ngIf="productForm.get('qty')?.errors?.['required']" class="text-danger">Quantity is required.</small>
+              <small *ngIf="productForm.get('qty')?.errors?.['pattern']" class="text-danger">Quantity must be a valid number.</small>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="price" class="form-label">Price:</label>
+          <input id="price" formControlName="price" type="number" class="form-control" required />
+          <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" aria-live="polite">
+              <small *ngIf="productForm.get('price')?.errors?.['required']" class="text-danger">Price is required.</small>
+              <small *ngIf="productForm.get('price')?.errors?.['min']" class="text-danger">Price must be a positive number.</small>
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-warning" [disabled]="productForm.invalid">Submit</button>
+  </form>
+</div>

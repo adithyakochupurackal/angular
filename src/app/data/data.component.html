@@ -1,45 +1,30 @@
-<div>
-    <h2>this is from data component</h2>
-    <!-- <h3>productId : {{productId}}</h3>
-    <h3>description : {{description}}</h3>
-    <h3>brand : {{brand}}</h3>
-    <h3>price : {{price}}</h3> -->
-    <!-- <h3>in stock : {{isAvailable}}</h3> -->
-    <!--  -->
-<div class="flex-container">
-    <div class="container-left">
-        <table>
-            <thead>
-                <tr>
-                    <th>Product ID</th>
-                    <th>Description</th>
-                    <th>Brand</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <!-- Uncomment if needed
-                    <th>Availability</th>
-                    <th>Free Shipping</th>
-                    -->
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let product of products; index as i">
-                    <td>{{ product.productId }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.brand }}</td>
-                    <td>{{ product.qty }}</td>
-                    <td>{{ product.price }}</td>
-                    <!-- Uncomment if needed
-                    <td>{{ product.isAvailable }}</td>
-                    <td>{{ product.freeshipping }}</td>
-                    -->
-                </tr>
-            </tbody>
-        </table>
-        
-    </div> 
-    <!-- <div class="container-right" >
-            <img src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v369-ning-22-neonsign_2.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=74694f69fbdd3115feae7978999f7122" alt="welcome" class="image1">
-    </div>   -->
+<div class="container mt-5">
+    <h2 class="text-center">Product Information</h2>
     
+    <div class="flex-container">
+        <div class="container-left">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover mt-4">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Description</th>
+                            <th>Brand</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of products; index as i">
+                            <td>{{ product.productId }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.brand }}</td>
+                            <td>{{ product.qty }}</td>
+                            <td>{{ product.price | currency }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

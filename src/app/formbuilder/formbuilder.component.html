@@ -1,0 +1,53 @@
+<h3 class="text-center">Create a Product: Form Builder</h3>
+<div class="container mt-4">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        
+        <div class="mb-3">
+            <label for="productId" class="form-label">Product ID:</label>
+            <input type="text" id="productId" formControlName="productId" class="form-control" required />
+            <div class="invalid-feedback">Please provide a valid Product ID.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="brand" class="form-label">Brand:</label>
+            <input type="text" id="brand" formControlName="brand" class="form-control" required />
+            <div class="invalid-feedback">Please provide a brand name.</div>
+        </div>
+
+        <div formGroupName="description" class="mb-3">
+            <h5>Description</h5>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age:</label>
+                <input type="text" id="age" formControlName="age" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label for="seasons" class="form-label">Seasons:</label>
+                <input type="text" id="seasons" formControlName="seasons" class="form-control" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="qty" class="form-label">Quantity:</label>
+            <input type="text" id="qty" formControlName="qty" class="form-control" required />
+            <div class="invalid-feedback">Please provide a quantity.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price:</label>
+            <input type="text" id="price" formControlName="price" class="form-control" required />
+            <div class="invalid-feedback">Please provide a price.</div>
+        </div>
+
+        <div formArrayName="suppliers" class="mb-3">
+            <label>Suppliers</label>
+            <button type="button" class="btn btn-secondary mb-2" (click)="addNewSupplier()">Add New Supplier</button>
+            <div *ngFor="let supplier of suppliers.controls; let i = index">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" [formControlName]="i" placeholder="Supplier {{ i + 1 }}" />
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-danger" [disabled]="!productForm.valid">Submit</button>
+    </form>
+</div>
